@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add"
+        android:title="add"
+        android:icon="@drawable/arrow_left"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/delete"
+        android:title="delete"
+        android:icon="@drawable/amu_bubble_mask"
+        app:showAsAction="always"/>
+
+</menu>

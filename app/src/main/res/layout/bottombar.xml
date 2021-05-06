@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/colorAccent"
+        app:fabCradleMargin="@dimen/fab_margin"
+        app:fabCradleRoundedCornerRadius="@dimen/fab_corner_radius"
+        app:hideOnScroll="false"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:transitionName="bottom_appbar"
+        style="@style/Widget.MaterialComponents.BottomAppBar"
+        tools:ignore="BottomAppBar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bottom_fab"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:clickable="true"
+        app:tint="@color/colorPrimary"
+        android:tint="@color/colorPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/colorAccent"
+        app:layout_anchor="@id/bottom_appbar"/>
+
+</merge>

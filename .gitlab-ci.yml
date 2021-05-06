@@ -1,0 +1,28 @@
+image: budtmo/docker-android-x86-5.0.1:latest
+
+stages:
+- build
+- simulator
+- installation  
+- testing
+
+BuildSources:
+  stage: build
+  script:
+    - ./gradlew assembleDebug
+
+BuildTests:
+  stage: build
+  script:
+    - ./gradlew assembleAndroidTest
+
+      #RunSimulator:
+      #  stage: simulator
+      #  script:
+      #    - ${SDK_PATH}/tools/emulator -avd testEmulator -no-audio -no-boot-anim -no-accel -no-window -gpu off
+
+InstallAPK:
+  stage: installation
+  script:
+    - ${SDK_PATH}/platform-tools/adb install app/build/outputs/apk/debug/app-debug.apk
+

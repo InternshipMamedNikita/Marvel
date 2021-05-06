@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">arpresent</string>
+    <string name="db_name">arpresent.db</string>
+
+    <!-- COMMON -->
+    <string name="permission_not_granted">Sorry but permissions should be granted</string>
+    <string name="error_backend_not_response">Sorry, something went wrong. Try latter</string>
+    <string name="save_to_db_successed">Data was saved</string>
+    <string name="save_to_db_failed">Something went wrong, please try later</string>
+    <string name="loading">Loading…</string>
+
+
+    <!-- BIOMETRIC -->
+    <string name="biometric_login_title">Biometric login</string>
+    <string name="biometric_login_subtitle">Use your biometric credential</string>
+
+    <!-- LOGIN ACTIVITY -->
+    <string name="mail_invalid_error">Fill your mail field please</string>
+    <string name="password_invalid_error">Fill your password field please</string>
+    <string name="password_length_error">Password length must be at least 6 symbols</string>
+
+</resources>

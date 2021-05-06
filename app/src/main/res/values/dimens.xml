@@ -1,0 +1,20 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="action_bar_size">56dp</dimen>
+    <dimen name="fab_corner_radius">8dp</dimen>
+    <dimen name="fab_margin">5dp</dimen>
+    <dimen name="bottom_navigation_view_height">56dp</dimen>
+
+    <!--Common attributes-->
+    <dimen name="material_text_input_height">40dp</dimen>
+    <dimen name="margin_between_text_fields">14dp</dimen>
+    <dimen name="collapsing_bar_size">250dp</dimen>
+    <dimen name="collapsing_image_border_size">2dp</dimen>
+    <dimen name="collapsing_image_height">95dp</dimen>
+    <dimen name="collapsing_image_width">95dp</dimen>
+    <dimen name="collapsing_image_elevation">8dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+</resources>

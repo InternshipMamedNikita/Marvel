@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:clickable="true"
+    card_view:cardBackgroundColor="@color/white"
+    card_view:cardCornerRadius="0dp"
+    card_view:contentPaddingLeft="16dp"
+    card_view:contentPaddingRight="16dp"
+    card_view:contentPaddingTop="8dp"
+    card_view:cardElevation="0dp"
+    card_view:cardPreventCornerOverlap="false"
+    android:foreground="@drawable/selectable_item_background"
+    android:id="@+id/menu_item">
+    <ImageView
+        android:id="@+id/icon"
+        android:src="@drawable/ic_information_outline_black_24dp"
+        android:tint="@color/defaultTextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/title"
+        android:text="Test"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/icon"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="45dp"
+        android:textStyle="normal" />
+</androidx.cardview.widget.CardView>

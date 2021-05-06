@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Design colors -->
+    <color name="colorPrimary">@color/red_middle</color>
+    <color name="colorPrimaryDark">@color/red</color>
+    <color name="colorAccent">@color/middle_blue</color>
+
+    <color name="textIconColorPrimary">@color/black_light</color>
+
+    <color name="defaultTextColor">#DE000000</color>
+
+    <color name="green_dark">#36717a</color>
+    <color name="green_dark_alfa30">#9f36717a</color>
+    <color name="green_dark_alfa60">#4a36717a</color>
+    <color name="green_middle">#408590</color>
+    <color name="green_middle_alfa30">#9f408590</color>
+    <color name="green_middle_alfa60">#4a408590</color>
+    <color name="green_middless">#5cbfcf</color>
+    <color name="purple_light">#D81B60</color>
+    <color name="purple_lightness">#ff2071</color>
+    <color name="purple_light_alfa30">#9fff2071</color>
+    <color name="purple_light_alfa60">#4aff2071</color>
+
+    <color name="grey_dark">#4c4c4c</color>
+    <color name="grey">#aba4a4</color>
+    <color name="grey_middle">#c5c5c5</color>
+    <color name="grey_light">#e9e4e4</color>
+
+    <color name="white">#ffffff</color>
+    <color name="white_alfa30">#dfffffff</color>
+    <color name="white_alfa40">#7fffffff</color>
+    <color name="white_alfa60">#4affffff</color>
+    <color name="black">#000000</color>
+
+    <color name="black_light">#333333</color>
+    <color name="black_alfa10">#df000000</color>
+    <color name="black_alfa30">#9f000000</color>
+    <color name="black_alfa40">#6f000000</color>
+    <color name="black_alfa60">#4e000000</color>
+
+    <color name="red">#ff4a55</color>
+    <color name="red_middle">#ff6a72</color>
+    <color name="red_light">#ff7981</color>
+    <color name="pink">#DD4C7D</color>
+
+
+    <color name="yellow">#FFA300</color>
+    <color name="green">#00ff00</color>
+
+    <color name="blue">#001DB9</color>
+    <color name="middle_blue">#003BD1</color>
+    <color name="light_blue">#5777F5</color>
+    <color name="blue_alfa60">#99001DB9</color>
+    <color name="blue_alfa40">#66001DB9</color>
+    <color name="blue_alfa30">#4D001DB9</color>
+    <color name="easy_blue">#0A001DB9</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="bottom_menu_icon_color">#8A000000</color>
+    <color name="topic_buttons_color">#666666</color>
+
+
+    <!-- VideoTrimView colors -->
+    <color name="seekbar_color">#3be3e3</color>
+    <color name="line_color">#FF15FF00</color>
+    <color name="shadow_color">#00000000</color>
+
+
+</resources>
+
+
