@@ -31,8 +31,9 @@
                 <Button
                     android:id="@+id/exit"
                     android:onClick="exit"
+                    android:text="Выход"
                     android:layout_alignParentEnd="true"
-                    android:layout_width="50dp"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     ></Button>
             </RelativeLayout>
