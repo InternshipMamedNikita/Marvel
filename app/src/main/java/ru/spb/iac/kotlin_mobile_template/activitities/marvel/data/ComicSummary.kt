@@ -8,4 +8,4 @@ import kotlinx.android.parcel.Parcelize
 data class ComicSummary(
     @SerializedName ("resourceURI") val resourceURI: String?,
     @SerializedName ("name")  val name: String?
-):Parcelable
+): Parcelable

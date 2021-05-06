@@ -13,4 +13,4 @@ data class CharacterDataWrapper(
      @SerializedName ("attributionHTML") val attributionHTML: String?,
      @SerializedName ("data") val data: CharacterDataContainer?,
      @SerializedName ("etag") val etag: String?
-):Parcelable
+): Parcelable

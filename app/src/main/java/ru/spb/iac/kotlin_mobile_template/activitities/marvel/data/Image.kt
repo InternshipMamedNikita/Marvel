@@ -8,4 +8,4 @@ import kotlinx.android.parcel.Parcelize
 data class Image(
     @SerializedName("path") val path: String?,
     @SerializedName("extension") val extension: String?
-):Parcelable
+): Parcelable

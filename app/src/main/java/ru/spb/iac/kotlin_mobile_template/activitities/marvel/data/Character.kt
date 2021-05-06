@@ -20,4 +20,4 @@ data class Character(
     @SerializedName ("stories") val stories:@RawValue StoryList?,
     @SerializedName ("events") val events:@RawValue EventList?,
     @SerializedName ("series") val series:@RawValue SeriesList?
-):Parcelable
+): Parcelable

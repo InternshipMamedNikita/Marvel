@@ -10,4 +10,4 @@ data class StoryList(
     @SerializedName ("returned") val returned: Int?,
     @SerializedName ("collectionURI") val collectionURI: String?,
     @SerializedName ("items") val items: MutableList<ComicSummary>?
-):Parcelable
+): Parcelable

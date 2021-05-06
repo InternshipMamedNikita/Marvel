@@ -9,8 +9,9 @@ import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.FullMarvelChar
 import ru.spb.iac.kotlin_mobile_template.architecture.presenter.AbstractPresenter
 import ru.spb.iac.kotlin_mobile_template.databinding.FullRssItemInfoBinding
 
-class FullMarvelCharactersInfoPresenter(view:FullMarvelCharactersInfoView, private val binding:FullRssItemInfoBinding)
-    :AbstractPresenter<FullMarvelCharactersInfoView>(view) {
+class FullMarvelCharactersInfoPresenter(view: FullMarvelCharactersInfoView,
+                                        private val binding: FullRssItemInfoBinding)
+    : AbstractPresenter<FullMarvelCharactersInfoView>(view) {
      override fun onStart() {
          binding.model = FullMarvelCharctersInfoModel((binding.root.context as AppCompatActivity).intent.getParcelableExtra("character"))
      }

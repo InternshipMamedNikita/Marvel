@@ -22,7 +22,7 @@ import ru.spb.iac.kotlin_mobile_template.databinding.ActivityRssFeedBinding
 
 class MarvelCharactersPresenter (view: MarvelCharactersView,
                                  private val binding: ActivityRssFeedBinding
-) : AbstractPresenter<MarvelCharactersView>(view) {
+): AbstractPresenter<MarvelCharactersView>(view) {
     init{
         val defHand = DefaultApiActions(this.subscription,this.view)
         val handler = ApiResponseHandler(defHand)

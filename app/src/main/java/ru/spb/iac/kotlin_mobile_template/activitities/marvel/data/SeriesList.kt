@@ -10,4 +10,4 @@ data class SeriesList(
      @SerializedName("returned") val returned: Int?,
      @SerializedName("collectionURI") val collectionURI: String?,
      @SerializedName("items") val items: MutableList<EventSummary>?
-):Parcelable
+): Parcelable

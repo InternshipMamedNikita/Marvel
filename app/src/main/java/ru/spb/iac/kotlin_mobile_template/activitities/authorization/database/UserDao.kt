@@ -8,15 +8,15 @@ import ru.spb.iac.kotlin_mobile_template.activitities.main.model.db.UserEntity
 interface UserDao {
 
     @Query("SELECT * FROM user")
-    fun getUsers():Observable<List<User>>
+    fun getUsers(): Observable<List<User>>
 
     @Query("SELECT * FROM user WHERE login LIKE :login")
-    fun getUser(login:String): Maybe<User?>
+    fun getUser(login: String): Maybe<User?>
 
-    @Insert(onConflict = OnConflictStrategy.FAIL)
-    fun insertUser(user:User):Completable
+    @Insert
+    fun insertUser(user: User): Completable
 
-    @Insert()
+    @Insert
     fun insert(user: List<User>): Completable
 
 }

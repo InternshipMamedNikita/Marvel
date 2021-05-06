@@ -1,10 +1,6 @@
 package ru.spb.iac.kotlin_mobile_template.activitities.authorization.view
 
-import android.content.Context
-import android.content.Intent
-import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -14,22 +10,21 @@ import io.reactivex.schedulers.Schedulers
 import ru.spb.iac.kotlin_mobile_template.R
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.User
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
-import ru.spb.iac.kotlin_mobile_template.activitities.main.view.MainActivity
-import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
-import java.util.ArrayList
 
-class Registration :AppCompatActivity() {
+class Registration: AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
     }
+
     fun registrate(v: View?) {
         DBConnection.database.getDao()
             .getUser(findViewById<EditText>(R.id.reg_login).text.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess {
-                Toast.makeText(this,"Пользователь с таким логином существует",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Пользователь с таким логином существует", Toast.LENGTH_LONG).show()
             }.doOnError {
                 throw it
             }.doOnComplete {

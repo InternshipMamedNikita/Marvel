@@ -25,10 +25,11 @@ import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharacte
 import java.lang.Exception
 
 
-class Authorization :AppCompatActivity()
+class Authorization: AppCompatActivity()
 {
-    lateinit var login :EditText
-    lateinit var password :EditText
+    lateinit var login: EditText
+    lateinit var password: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization)
@@ -37,12 +38,10 @@ class Authorization :AppCompatActivity()
         val edit = Editable.Factory.getInstance()
         login.text = edit.newEditable(getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("login", ""))
         password.text = edit.newEditable(getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("password", ""))
-        if (login.text.toString() !="" && password.text.toString() !="")
+        if (login.text.toString() != "" && password.text.toString() != "")
             openMarvelCharacters(null)
     }
-    override fun onDestroy() {
-        super.onDestroy()
-    }
+
     fun openMarvelCharacters(v: View?) {
         DBConnection.database.getDao()
             .getUser(findViewById<EditText>(R.id.auth_login).text.toString())
