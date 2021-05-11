@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.room.Room
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.spb.iac.kotlin_mobile_template.R
@@ -27,14 +29,14 @@ import java.lang.Exception
 
 class Authorization: AppCompatActivity()
 {
-    lateinit var login: EditText
-    lateinit var password: EditText
+    lateinit var login: TextInputEditText
+    lateinit var password: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization)
-        login = findViewById<EditText>(R.id.auth_login)
-        password = findViewById<EditText>(R.id.auth_password)
+        login = findViewById(R.id.auth_login)
+        password = findViewById(R.id.auth_password)
         val edit = Editable.Factory.getInstance()
         login.text = edit.newEditable(getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("login", ""))
         password.text = edit.newEditable(getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("password", ""))

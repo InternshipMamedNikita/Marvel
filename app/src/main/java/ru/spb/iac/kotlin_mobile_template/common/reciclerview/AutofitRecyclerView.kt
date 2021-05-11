@@ -120,7 +120,7 @@ class AutofitRecyclerView<T>  @JvmOverloads  constructor(recyclerContext: Contex
     }
 
     private fun startScrollChanel() {
-        this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        this.addOnScrollListener(object : OnScrollListener() {
             override fun onScrolled(recyclervView: RecyclerView, dx: Int, dy: Int) {
                 val lastVisibleItemPosition = getLastVisibleItemPosition()
                 val positionForStartUpdate = adapter?.itemCount?.minus(1) ?: 0

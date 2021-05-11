@@ -9,6 +9,14 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/defaultTextColor</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
     <style name="ToolBarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">18sp</item>
