@@ -12,7 +12,6 @@ import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.User
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
 
 class Registration: AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)

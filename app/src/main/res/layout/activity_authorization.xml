@@ -46,6 +46,7 @@
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <Button
+            android:background="#bd0000"
             android:onClick="openMarvelCharacters"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
@@ -54,6 +55,7 @@
             android:textSize="25dp"
             android:layout_height="50dp"></Button>
     <Button
+        android:background="#bd0000"
         android:onClick="openRegistration"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"

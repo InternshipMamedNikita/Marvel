@@ -18,5 +18,8 @@
     <string name="mail_invalid_error">Fill your mail field please</string>
     <string name="password_invalid_error">Fill your password field please</string>
     <string name="password_length_error">Password length must be at least 6 symbols</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_hint_text">Введите имя персонажа</string>
 
 </resources>
