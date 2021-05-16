@@ -38,24 +38,24 @@ class MarvelCharactersPresenter (view: MarvelCharactersView,
         }).subscribe()
     }
     override fun onStart() {
-        binding.searchingTitle.addTextChangedListener(object :TextWatcher
-        {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (binding.searchingTitle.text.isNullOrEmpty()) {
-                    (binding.recycler.adapter as MarvelCharactersAdapter).setModel(CharactersObject.characterDataWrapper?.data?.results!!)
-                } else {
-                    (binding.recycler.adapter as MarvelCharactersAdapter).setModel((CharactersObject.characterDataWrapper?.data?.results!!).filter {
-                        it.name?.contains(binding.searchingTitle.text.toString(), true)!!
-                    })
-                }
-            }
-        })
+//        binding.searchingTitle.addTextChangedListener(object :TextWatcher
+//        {
+//            override fun afterTextChanged(s: Editable?) {
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                if (binding.searchingTitle.text.isNullOrEmpty()) {
+//                    (binding.recycler.adapter as MarvelCharactersAdapter).setModel(CharactersObject.characterDataWrapper?.data?.results!!)
+//                } else {
+//                    (binding.recycler.adapter as MarvelCharactersAdapter).setModel((CharactersObject.characterDataWrapper?.data?.results!!).filter {
+//                        it.name?.contains(binding.searchingTitle.text.toString(), true)!!
+//                    })
+//                }
+//            }
+//        })
     }
     override fun onDestroyed() {
     }

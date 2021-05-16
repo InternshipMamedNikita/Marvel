@@ -6,7 +6,7 @@ import ru.spb.iac.kotlin_mobile_template.architecture.model.databinding.viewmode
 /**
  * Created by nixbyte on 20,Декабрь,2019
  */
-abstract class AutoLoadingRecyclerViewAdapter<T>(var listElements: MutableList<T>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), BindableAdapter<List<T>> {
+abstract class AutoLoadingRecyclerViewAdapter<T>(var    listElements: MutableList<T>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), BindableAdapter<List<T>> {
 
 
     fun clear() {

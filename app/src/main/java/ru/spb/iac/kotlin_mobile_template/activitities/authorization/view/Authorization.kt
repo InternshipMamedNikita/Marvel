@@ -1,30 +1,24 @@
 package ru.spb.iac.kotlin_mobile_template.activitities.authorization.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.text.Editable
+import android.util.AttributeSet
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
-import androidx.room.Room
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.spb.iac.kotlin_mobile_template.R
-import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.User
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
-import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.Database
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
-import java.lang.Exception
 
 
 class Authorization: AppCompatActivity()
@@ -44,6 +38,7 @@ class Authorization: AppCompatActivity()
             .getString("password", ""))
         if (login.text.toString() != "" && password.text.toString() != "")
             openMarvelCharacters(null)
+
     }
 
     fun openMarvelCharacters(v: View?) {

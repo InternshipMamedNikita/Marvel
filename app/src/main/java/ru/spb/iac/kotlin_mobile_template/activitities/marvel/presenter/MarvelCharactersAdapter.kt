@@ -21,7 +21,6 @@ class MarvelCharactersAdapter (publications: MutableList<Character>): AutoLoadin
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemHolder = holder as ItemCharacterViewHolder
-
         itemHolder.binding.root.setOnClickListener {
             val intent = Intent(itemHolder.binding.root.context, FullMarvelCharactersInfoActivity::class.java)
             intent.putExtra("character", listElements[position])

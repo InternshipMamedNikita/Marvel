@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import ru.spb.iac.kotlin_mobile_template.architecture.presenter.AbstractPresenter
 
 /**
@@ -57,4 +58,5 @@ abstract class AbstractActivity<V: AbstractView,T> : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         presenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
 }

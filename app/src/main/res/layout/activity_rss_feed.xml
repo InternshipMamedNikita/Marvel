@@ -8,64 +8,60 @@
             type="ru.spb.iac.kotlin_mobile_template.activitities.marvel.model.MarvelCharactersModel"/>
     </data>
 
-    <LinearLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawe_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_characters"
+        tools:context=".activitities.marvel.view.MarvelCharactersActivity">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:contentInsetStart="-0dp"
-            android:orientation="horizontal">
-
-            <FrameLayout
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/toolbar_menu"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.appbar.AppBarLayout
+                android:layout_height="?actionBarSize"
+                android:background="#bd0000"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                tools:ignore="MissingConstraints">
+                <ImageView
+                    android:id="@+id/view_menu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="#bd0000"
+                    android:src="@drawable/menu"
+                    app:tint="@color/white">
+                </ImageView>
+                <TextView
+                    android:id="@+id/text"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Персонажи"
+                    android:background="#bd0000"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
-                    <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/app_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#bd0000"
-                        app:navigationIcon="@drawable/ic_baseline_menu_24"
-                        app:title="Marvel">
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <EditText
-                                android:textColor="#fff"
-                                android:textColorHint="#fff"
-                                android:id="@+id/searching_title"
-                                android:layout_width="250dp"
-                                android:layout_height="match_parent"
-                                android:hint="@string/search_hint_text">
-                            </EditText>
-
-                            <ImageButton
-                                android:layout_width="50dp"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentEnd="true"
-                                android:src="@drawable/search_bar"
-                                android:background="#bd0000"/>
-                        </RelativeLayout>
-
-                    </androidx.appcompat.widget.Toolbar>
-                </com.google.android.material.appbar.AppBarLayout>
-            </FrameLayout>
-        </androidx.appcompat.widget.Toolbar>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation"
+            android:layout_width="wrap_content"
+            app:menu="@menu/menu_item"
+            app:headerLayout="@layout/profile"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="55dp"
             android:id="@+id/recycler"
-            android:layout_weight="12"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="12" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>

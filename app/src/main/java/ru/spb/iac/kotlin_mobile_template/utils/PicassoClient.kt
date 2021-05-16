@@ -52,12 +52,12 @@ object PicassoClient {
     @BindingAdapter("bind:backFromMemory")
     fun backFromMemory(view: ImageView?, back: String?) {
         if (back.isNullOrEmpty())
-            Picasso.get().load("https://nplus1.ru/i/logo.png")
+            Picasso.get().load(R.mipmap.captain_russia_foreground)
                 .fit()
                 .into(view)
         else
             Picasso.get().load(back)
-                .placeholder(R.drawable.arrow_left)
+                .placeholder(R.mipmap.captain_russia)
                 .fit()
                 .into(view)
     }
