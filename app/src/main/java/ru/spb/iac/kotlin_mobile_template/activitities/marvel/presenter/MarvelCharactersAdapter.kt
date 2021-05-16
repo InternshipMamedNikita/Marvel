@@ -28,8 +28,11 @@ class MarvelCharactersAdapter (publications: MutableList<Character>): AutoLoadin
         }
 
         itemHolder.binding.model = ItemCharacterModel(listElements[position].name,
-            listElements[position].description,
-            listElements[position].thumbnail?.path + "/landscape_medium.jpg")
+                                                      if (listElements[position].description.isNullOrEmpty())
+                                                          "No character description"
+                                                      else listElements[position].description,
+                                            listElements[position].thumbnail?.path + "/landscape_medium.jpg")
     }
+
     class ItemCharacterViewHolder(val binding: RssItemBinding): RecyclerView.ViewHolder(binding.root)
 }

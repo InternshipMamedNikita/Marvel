@@ -18,7 +18,7 @@ class Registration: AppCompatActivity() {
     }
 
     fun registrate(v: View?) {
-        DBConnection.database.getDao()
+        DBConnection.database.getUserDao()
             .getUser(findViewById<EditText>(R.id.reg_login).text.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -27,7 +27,7 @@ class Registration: AppCompatActivity() {
             }.doOnError {
                 throw it
             }.doOnComplete {
-                DBConnection.database.getDao().insertUser(User(0,
+                DBConnection.database.getUserDao().insertUser(User(0,
                     findViewById<EditText>(R.id.reg_name).text.toString(),
                     findViewById<EditText>(R.id.reg_login).text.toString(),
                     findViewById<EditText>(R.id.reg_password).text.toString()))

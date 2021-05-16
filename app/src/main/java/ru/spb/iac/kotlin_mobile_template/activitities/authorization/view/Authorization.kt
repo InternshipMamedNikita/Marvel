@@ -4,21 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.util.AttributeSet
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.spb.iac.kotlin_mobile_template.R
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
+import ru.spb.iac.kotlin_mobile_template.utils.GsonUtils
 
 
 class Authorization: AppCompatActivity()
@@ -38,11 +34,14 @@ class Authorization: AppCompatActivity()
             .getString("password", ""))
         if (login.text.toString() != "" && password.text.toString() != "")
             openMarvelCharacters(null)
-
     }
 
     fun openMarvelCharacters(v: View?) {
-        DBConnection.database.getDao()
+//        GsonUtils.readValues(GsonUtils.writeValue(arrayListOf(3, 10, 30, 203, 1020)), Int::class.java)
+//            ?.forEach {
+//                Log.e("ThisTag", it.toString())
+//            }
+        DBConnection.database.getUserDao()
             .getUser(findViewById<EditText>(R.id.auth_login).text.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -62,7 +61,7 @@ class Authorization: AppCompatActivity()
                 Toast.makeText(this, "Неверный логин", Toast.LENGTH_LONG).show()
             }.subscribe()
     }
-    fun openRegistration(v:View?)
+    fun openRegistration(v: View?)
     {
         startActivity(Intent(this,Registration::class.java))
     }
