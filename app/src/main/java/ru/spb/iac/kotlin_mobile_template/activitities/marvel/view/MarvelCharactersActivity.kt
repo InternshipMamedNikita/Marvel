@@ -2,9 +2,12 @@ package ru.spb.iac.kotlin_mobile_template.activitities.marvel.view
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -15,18 +18,26 @@ import ru.spb.iac.kotlin_mobile_template.activitities.marvel.presenter.MarvelCha
 import ru.spb.iac.kotlin_mobile_template.architecture.model.databinding.ActivityBindingProvider
 import ru.spb.iac.kotlin_mobile_template.architecture.presenter.AbstractPresenter
 import ru.spb.iac.kotlin_mobile_template.architecture.view.AbstractActivity
+import ru.spb.iac.kotlin_mobile_template.common.actionbar.ActionBarConstructor
 import ru.spb.iac.kotlin_mobile_template.databinding.ActivityRssFeedBinding
 
 class MarvelCharactersActivity : AbstractActivity<MarvelCharactersView, MarvelCharactersModel>() {
     private val binding: ActivityRssFeedBinding by ActivityBindingProvider(R.layout.activity_rss_feed)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val mToolbar: Toolbar = findViewById(R.id.main_toolbar)
+        setSupportActionBar(mToolbar)
+
+
+
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawe_layout)
-        findViewById<ImageView>(R.id.view_menu).setOnClickListener{
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
-        val navigationView = findViewById<NavigationView>(R.id.navigation)
-        navigationView.itemIconTintList = null
+//        findViewById<ImageView>(R.id.view_menu).setOnClickListener{
+//            drawerLayout.openDrawer(GravityCompat.START)
+//        }
+//        val navigationView = findViewById<NavigationView>(R.id.navigation)
+//        navigationView.itemIconTintList = null
     }
     fun exit(v: View?)
     {
@@ -39,5 +50,16 @@ class MarvelCharactersActivity : AbstractActivity<MarvelCharactersView, MarvelCh
     }
     override fun initView(): MarvelCharactersView {
         return MarvelCharactersView(this, binding)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        presenter.onCreateOptionsMenu(menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        presenter.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item)
     }
 }

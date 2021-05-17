@@ -3,16 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/marvel_red</item>
+        <item name="colorPrimaryDark">@color/marvel_red</item>
         <item name="colorControlNormal">@color/defaultTextColor</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/marvel_red</item>
+        <item name="colorPrimaryDark">@color/marvel_red</item>
         <item name="colorControlNormal">@color/defaultTextColor</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -66,6 +66,12 @@
         <item name="boxCornerRadiusTopEnd">10dp</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
+    </style>
+    <style name="MenuItem" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:actionMenuTextColor">@color/blue</item>
+        <item name="android:icon">@drawable/search_character</item>
+    </style>
+    <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
     </style>
 
 

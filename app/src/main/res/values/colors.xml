@@ -67,6 +67,8 @@
     <color name="shadow_color">#00000000</color>
 
 
+    <color name="marvel_red">#BD0000</color>
+    <color name="marvel_blue">#000047</color>
 </resources>
 
 

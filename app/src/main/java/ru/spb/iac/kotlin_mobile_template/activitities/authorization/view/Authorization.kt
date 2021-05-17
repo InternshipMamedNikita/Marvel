@@ -37,10 +37,6 @@ class Authorization: AppCompatActivity()
     }
 
     fun openMarvelCharacters(v: View?) {
-//        GsonUtils.readValues(GsonUtils.writeValue(arrayListOf(3, 10, 30, 203, 1020)), Int::class.java)
-//            ?.forEach {
-//                Log.e("ThisTag", it.toString())
-//            }
         DBConnection.database.getUserDao()
             .getUser(findViewById<EditText>(R.id.auth_login).text.toString())
             .subscribeOn(Schedulers.io())

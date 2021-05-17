@@ -37,6 +37,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".activitities.authorization.view.LaunchScreen"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
@@ -46,17 +47,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activitities.authorization.view.Authorization">
-
-        </activity>
+        <activity android:name=".activitities.authorization.view.Authorization" />
         <activity android:name=".activitities.authorization.view.Registration" />
         <activity
             android:name=".activitities.marvel.view.MarvelCharactersActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <activity
             android:name=".activitities.marvel.view.FullMarvelCharactersInfoActivity"
-            android:parentActivityName=".activitities.marvel.view.MarvelCharactersActivity"></activity>
+            android:parentActivityName=".activitities.marvel.view.MarvelCharactersActivity" />
     </application>
 </manifest>

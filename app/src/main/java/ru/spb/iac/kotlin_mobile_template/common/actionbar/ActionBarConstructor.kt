@@ -154,7 +154,7 @@ class ActionBarConstructor(private val activity: AppCompatActivity
         }
     }
 
-    class Builder(val activity: AppCompatActivity) {
+    class Builder(var activity: AppCompatActivity) {
         var title: String = ""
             private set
         var titleColor = R.color.white
