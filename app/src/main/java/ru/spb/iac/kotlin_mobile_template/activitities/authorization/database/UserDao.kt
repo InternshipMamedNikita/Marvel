@@ -8,7 +8,7 @@ import ru.spb.iac.kotlin_mobile_template.activitities.main.model.db.UserEntity
 interface UserDao {
 
     @Query("SELECT * FROM user")
-    fun getUsers(): Observable<List<User>>
+    fun getUsers(): List<User>
 
     @Query("SELECT * FROM user WHERE login LIKE :login")
     fun getUser(login: String): Maybe<User?>
@@ -20,6 +20,7 @@ interface UserDao {
     fun insert(user: List<User>): Completable
 
     @Update
+//    @Query("UPDATE user SET name = :, login =  WHERE a = 1;")
     fun updateUser(user: User): Completable
 
 }

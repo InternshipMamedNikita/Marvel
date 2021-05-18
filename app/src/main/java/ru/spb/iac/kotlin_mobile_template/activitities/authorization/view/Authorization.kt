@@ -15,6 +15,7 @@ import ru.spb.iac.kotlin_mobile_template.R
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
 import ru.spb.iac.kotlin_mobile_template.utils.GsonUtils
+import kotlin.concurrent.thread
 
 
 class Authorization: AppCompatActivity()
@@ -34,6 +35,16 @@ class Authorization: AppCompatActivity()
             .getString("password", ""))
         if (login.text.toString() != "" && password.text.toString() != "")
             openMarvelCharacters(null)
+
+        thread {
+            Log.e("TAG", "onCreate: ${DBConnection.database.getUserDao()
+                .getUsers().count()}")
+
+            for (hasoalfsglaj in DBConnection.database.getUserDao()
+                .getUsers())
+                Log.e("TAG", "onCreate: ${hasoalfsglaj}")
+        }
+
     }
 
     fun openMarvelCharacters(v: View?) {
@@ -45,9 +56,10 @@ class Authorization: AppCompatActivity()
                 val password = findViewById<EditText>(R.id.auth_password)
                 if (password.text.toString() == it?.password) {
                     val edit = getSharedPreferences("UserData", Context.MODE_PRIVATE).edit()
-                    edit.putString("name", it?.name)
-                    edit.putString("login", login.text.toString())
-                    edit.putString("password", password.text.toString()).apply()
+                    edit.putInt("id", it.id)
+                    edit.putString("name", it.name)
+                    edit.putString("login", it.login)
+                    edit.putString("password", it.password).apply()
                     startActivity(Intent(this, MarvelCharactersActivity::class.java))
                 } else {
                     Toast.makeText(this, "Неверный пароль", Toast.LENGTH_LONG).show()
