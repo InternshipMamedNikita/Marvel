@@ -10,8 +10,10 @@ import io.reactivex.schedulers.Schedulers
 import ru.spb.iac.kotlin_mobile_template.R
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.User
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
+import ru.spb.iac.kotlin_mobile_template.databinding.ActivityRegistrationBinding
 
 class Registration: AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
@@ -27,6 +29,7 @@ class Registration: AppCompatActivity() {
             }.doOnError {
                 throw it
             }.doOnComplete {
+
                 DBConnection.database.getUserDao().insertUser(User(0,
                     findViewById<EditText>(R.id.reg_name).text.toString(),
                     findViewById<EditText>(R.id.reg_login).text.toString(),

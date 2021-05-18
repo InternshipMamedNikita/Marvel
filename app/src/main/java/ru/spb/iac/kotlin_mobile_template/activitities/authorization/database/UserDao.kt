@@ -19,4 +19,7 @@ interface UserDao {
     @Insert
     fun insert(user: List<User>): Completable
 
+    @Update
+    fun updateUser(user: User): Completable
+
 }

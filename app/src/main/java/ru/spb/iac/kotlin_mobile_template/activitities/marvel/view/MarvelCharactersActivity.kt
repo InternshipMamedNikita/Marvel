@@ -26,23 +26,13 @@ class MarvelCharactersActivity : AbstractActivity<MarvelCharactersView, MarvelCh
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val mToolbar: Toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(mToolbar)
 
-
-
-        val drawerLayout = findViewById<DrawerLayout>(R.id.drawe_layout)
-//        findViewById<ImageView>(R.id.view_menu).setOnClickListener{
-//            drawerLayout.openDrawer(GravityCompat.START)
-//        }
-//        val navigationView = findViewById<NavigationView>(R.id.navigation)
-//        navigationView.itemIconTintList = null
     }
-    fun exit(v: View?)
-    {
+    fun exit(v: View?) {
         val edit = getSharedPreferences("UserData", Context.MODE_PRIVATE).edit()
-        edit.clear().commit()
+        edit.clear().apply()
         finish()
     }
     override fun initPresenter(): AbstractPresenter<MarvelCharactersView> {

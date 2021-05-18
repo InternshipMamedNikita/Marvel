@@ -42,11 +42,12 @@ class Authorization: AppCompatActivity()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess {
-                val edit = getSharedPreferences("UserData", Context.MODE_PRIVATE).edit()
-                edit.putString("login", login.text.toString())
-                edit.putString("password", password.text.toString()).apply()
                 val password = findViewById<EditText>(R.id.auth_password)
                 if (password.text.toString() == it?.password) {
+                    val edit = getSharedPreferences("UserData", Context.MODE_PRIVATE).edit()
+                    edit.putString("name", it?.name)
+                    edit.putString("login", login.text.toString())
+                    edit.putString("password", password.text.toString()).apply()
                     startActivity(Intent(this, MarvelCharactersActivity::class.java))
                 } else {
                     Toast.makeText(this, "Неверный пароль", Toast.LENGTH_LONG).show()
