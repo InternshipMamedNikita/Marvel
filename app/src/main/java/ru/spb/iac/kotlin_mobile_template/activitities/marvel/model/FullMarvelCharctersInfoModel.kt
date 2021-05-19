@@ -8,12 +8,10 @@ import ru.spb.iac.kotlin_mobile_template.activitities.marvel.data.CharacterDataW
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.data.Character
 
 
-class FullMarvelCharctersInfoModel (private var character: Character): BaseObservable() {
+class FullMarvelCharctersInfoModel (private var character: Character?): BaseObservable() {
     @Bindable
-    fun getCharacter(): Character {
-        return character
-    }
-    fun setCharacter(character: Character) {
+    fun getCharacter() = character
+    fun setCharacter(character: Character?) {
         this.character = character
         notifyPropertyChanged(BR.character)
     }

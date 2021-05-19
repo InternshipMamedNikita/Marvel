@@ -22,19 +22,15 @@ import ru.spb.iac.kotlin_mobile_template.common.actionbar.ActionBarConstructor
 import ru.spb.iac.kotlin_mobile_template.databinding.ActivityRssFeedBinding
 
 class MarvelCharactersActivity : AbstractActivity<MarvelCharactersView, MarvelCharactersModel>() {
+
     private val binding: ActivityRssFeedBinding by ActivityBindingProvider(R.layout.activity_rss_feed)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val mToolbar: Toolbar = findViewById(R.id.main_toolbar)
         setSupportActionBar(mToolbar)
+    }
 
-    }
-    fun exit(v: View?) {
-        val edit = getSharedPreferences("UserData", Context.MODE_PRIVATE).edit()
-        edit.clear().apply()
-        finish()
-    }
     override fun initPresenter(): AbstractPresenter<MarvelCharactersView> {
         return MarvelCharactersPresenter(view, binding)
     }
@@ -42,14 +38,17 @@ class MarvelCharactersActivity : AbstractActivity<MarvelCharactersView, MarvelCh
         return MarvelCharactersView(this, binding)
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         presenter.onCreateOptionsMenu(menu)
         return super.onCreateOptionsMenu(menu)
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         presenter.onOptionsItemSelected(item)
         return super.onOptionsItemSelected(item)
+    }
+
+    fun exit(v: View?) {
+        getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().clear().apply()
+        finish()
     }
 }

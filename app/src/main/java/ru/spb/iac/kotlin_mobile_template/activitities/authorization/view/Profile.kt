@@ -22,11 +22,10 @@ import ru.spb.iac.kotlin_mobile_template.databinding.ProfileBinding
 import kotlin.concurrent.thread
 
 
-class Profile: AppCompatActivity(){
+class Profile: AppCompatActivity() {
 
     lateinit var binding: ProfileBinding
     lateinit var sharedPreferences: SharedPreferences
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,21 +37,22 @@ class Profile: AppCompatActivity(){
     }
 
     fun saveProfileData(v: View?) {
-        DBConnection.database.getUserDao()
-            .updateUser(User(sharedPreferences.getInt("id", Int.MAX_VALUE),
-                binding.regName.text.toString(),
-                binding.regLogin.text.toString(),
-                binding.regPassword.text.toString()))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnComplete {
-                val edit = sharedPreferences.edit()
-                edit.putString("name", binding.regName.text.toString())
-                edit.putString("login", binding.regLogin.text.toString())
-                edit.putString("password", binding.regPassword.text.toString()).apply()
-            }
-            .subscribe()
-
+        binding.run {
+            DBConnection.database.getUserDao()
+                .updateUser(User(sharedPreferences.getInt("id", Int.MAX_VALUE),
+                    regName.text.toString(),
+                    regLogin.text.toString(),
+                    regPassword.text.toString()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete {
+                    sharedPreferences.edit().run {
+                        putString("name", regName.text.toString())
+                        putString("login", regLogin.text.toString())
+                        putString("password", regPassword.text.toString()).apply()
+                    }
+                }.subscribe()
+        }
         onBackPressed()
     }
 

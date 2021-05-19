@@ -20,7 +20,6 @@ interface UserDao {
     fun insert(user: List<User>): Completable
 
     @Update
-//    @Query("UPDATE user SET name = :, login =  WHERE a = 1;")
     fun updateUser(user: User): Completable
 
 }

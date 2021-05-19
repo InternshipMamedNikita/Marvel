@@ -14,20 +14,23 @@ import ru.spb.iac.kotlin_mobile_template.common.reciclerview.AutoLoadingRecycler
 import ru.spb.iac.kotlin_mobile_template.databinding.RssItemBinding
 
 class MarvelCharactersAdapter (publications: MutableList<Character>): AutoLoadingRecyclerViewAdapter<Character>(publications) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: RssItemBinding = DataBindingUtil.inflate(inflater, R.layout.rss_item, parent, false)
         return ItemCharacterViewHolder(binding)
     }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val itemHolder = holder as ItemCharacterViewHolder
-        itemHolder.binding.root.setOnClickListener {
-            val intent = Intent(itemHolder.binding.root.context, FullMarvelCharactersInfoActivity::class.java)
-            intent.putExtra("character", listElements[position])
-            itemHolder.binding.root.context.startActivity(intent)
+        (holder as ItemCharacterViewHolder).binding.root.run {
+            setOnClickListener {
+                val intent = Intent(context, FullMarvelCharactersInfoActivity::class.java)
+                intent.putExtra("character", listElements[position])
+                context.startActivity(intent)
+            }
         }
 
-        itemHolder.binding.model = ItemCharacterModel(listElements[position].name,
+        holder.binding.model = ItemCharacterModel(listElements[position].name,
                                                       if (listElements[position].description.isNullOrEmpty())
                                                           "No character description"
                                                       else listElements[position].description,

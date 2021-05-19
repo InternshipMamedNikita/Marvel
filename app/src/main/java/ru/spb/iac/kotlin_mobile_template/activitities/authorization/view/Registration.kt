@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.spb.iac.kotlin_mobile_template.R
@@ -14,14 +15,16 @@ import ru.spb.iac.kotlin_mobile_template.databinding.ActivityRegistrationBinding
 
 class Registration: AppCompatActivity() {
 
+    lateinit var binding: ActivityRegistrationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_registration)
     }
 
     fun registrate(v: View?) {
         DBConnection.database.getUserDao()
-            .getUser(findViewById<EditText>(R.id.reg_login).text.toString())
+            .getUser(binding.regLogin.text.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess {
@@ -29,14 +32,15 @@ class Registration: AppCompatActivity() {
             }.doOnError {
                 throw it
             }.doOnComplete {
-
-                DBConnection.database.getUserDao().insertUser(User(0,
-                    findViewById<EditText>(R.id.reg_name).text.toString(),
-                    findViewById<EditText>(R.id.reg_login).text.toString(),
-                    findViewById<EditText>(R.id.reg_password).text.toString()))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
+                binding.run {
+                    DBConnection.database.getUserDao().insertUser(User(0,
+                        regName.text.toString(),
+                        regLogin.text.toString(),
+                        regPassword.text.toString()))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe()
+                }
                 finish()
             }.subscribe()
     }
