@@ -105,8 +105,8 @@ dependencies {
     implementation "com.google.dagger:dagger:${daggerVersion}"
 
     // Room
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "androidx.room:room-rxjava2:$roomVersion"
+    implementation "androidx.room:room-runtime:2.3.0"
+    implementation "androidx.room:room-rxjava2:2.3.0"
     kapt "androidx.room:room-compiler:$roomVersion"
 
     testImplementation 'junit:junit:4.13.2'

@@ -1,18 +1,37 @@
 package ru.spb.iac.kotlin_mobile_template.activitities.marvel.data
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.parcel.Parcelize
+import ru.spb.iac.kotlin_mobile_template.utils.GsonUtils
 
-@Entity(indices = [Index("id")])
+@Entity
+@TypeConverters(value = [StoryList.Converter::class])
 @Parcelize
-data class StoryList(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @SerializedName ("available") val available: Int?,
-    @SerializedName ("returned") val returned: Int?,
-    @SerializedName ("collectionURI") val collectionURI: String?,
-    @SerializedName ("items") val items: MutableList<ComicSummary>?
-): Parcelable
+data class StoryList(@PrimaryKey(autoGenerate = true)
+                     val id: Int = 0,
+                     @SerializedName("available")
+                     val available: Int?,
+                     @SerializedName("returned")
+                     val returned: Int?,
+                     @SerializedName("collectionURI")
+                     val collectionURI: String?,
+                     @SerializedName("items")
+                     val items: MutableList<StorySummary>?): Parcelable {
+    object Converter {
+        @TypeConverter
+        @JvmStatic
+        fun fromListToJson(list: List<StorySummary>?): String? {
+            return GsonUtils.writeValue(list)
+        }
+
+        @TypeConverter
+        @JvmStatic
+        fun fromJsonToList(json: String?): List<StorySummary>? {
+            return GsonUtils.readValues(json, StorySummary::class.java)
+        }
+    }
+}

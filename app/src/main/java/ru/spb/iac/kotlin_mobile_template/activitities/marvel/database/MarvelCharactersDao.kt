@@ -1,27 +1,53 @@
 package ru.spb.iac.kotlin_mobile_template.activitities.marvel.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import io.reactivex.Completable
+import androidx.room.*
 import io.reactivex.Maybe
-import io.reactivex.Observable
-import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.User
+import io.reactivex.Single
+import ru.spb.iac.kotlin_mobile_template.activitities.marvel.data.*
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.data.Character
+import ru.spb.iac.kotlin_mobile_template.activitities.marvel.data.relations.CharacterRelations
 
 @Dao
 interface MarvelCharactersDao {
 
-    @Query("SELECT * FROM user")
-    fun getUsers(): Observable<List<Character>>
+    @Transaction
+    @Query("SELECT * FROM Character")
+    fun getCharacters(): Single<List<CharacterRelations>>
 
-    @Query("SELECT * FROM user WHERE login LIKE :login")
-    fun getUser(login: String): Maybe<Character?>
+    @Transaction
+    @Query("SELECT * FROM Character WHERE id = :id")
+    fun getCharacterById(id: Int): Maybe<CharacterRelations?>
 
-    @Insert
-    fun insertUser(user: User): Completable
+    @Transaction
+    @Query("SELECT * FROM Character WHERE name = :characterName")
+    fun getCharacterByName(characterName: String): Maybe<CharacterRelations?>
 
-    @Insert
-    fun insert(user: List<User>): Completable
+    @Transaction
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCharacter(character: Character?,
+                        image: Image?,
+                        comicList: ComicList?,
+                        eventList: EventList?,
+                        seriesList: SeriesList?,
+                        storyList: StoryList?,
+                        urls: List<Url>?)
+
+    @Transaction
+    @Update
+    fun updateCharacter(character: Character?,
+                        image: Image?,
+                        comicList: ComicList?,
+                        eventList: EventList?,
+                        seriesList: SeriesList?,
+                        storyList: StoryList?,
+                        urls: List<Url>?)
+
+    @Transaction
+    @Delete
+    fun deleteCharacter(character: Character?)
+
+    @Transaction
+    @Query("DELETE FROM Character WHERE id = :id")
+    fun deleteCharacterById(id: Int)
 
 }

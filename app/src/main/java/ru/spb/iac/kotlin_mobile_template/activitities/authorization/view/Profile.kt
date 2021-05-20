@@ -3,23 +3,16 @@ package ru.spb.iac.kotlin_mobile_template.activitities.authorization.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import ru.spb.iac.kotlin_mobile_template.R
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.ProfileModel
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.User
-import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
+import ru.spb.iac.kotlin_mobile_template.appdatabase.DBConnection
 import ru.spb.iac.kotlin_mobile_template.databinding.ProfileBinding
-import kotlin.concurrent.thread
 
 
 class Profile: AppCompatActivity() {

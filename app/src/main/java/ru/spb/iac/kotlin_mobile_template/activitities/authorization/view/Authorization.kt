@@ -3,20 +3,22 @@ package ru.spb.iac.kotlin_mobile_template.activitities.authorization.view
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.xmlpull.v1.XmlPullParser
 import ru.spb.iac.kotlin_mobile_template.R
-import ru.spb.iac.kotlin_mobile_template.activitities.authorization.database.DBConnection
+import ru.spb.iac.kotlin_mobile_template.appdatabase.DBConnection
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
 import ru.spb.iac.kotlin_mobile_template.databinding.ActivityAuthorizationBinding
-import kotlin.concurrent.thread
 
 
 class Authorization: AppCompatActivity() {

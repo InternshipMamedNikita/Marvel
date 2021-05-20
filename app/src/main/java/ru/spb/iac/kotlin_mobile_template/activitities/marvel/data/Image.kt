@@ -7,10 +7,11 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-@Entity(indices = [Index("id")])
+@Entity
 @Parcelize
-data class Image(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @SerializedName("path") val path: String?,
-    @SerializedName("extension") val extension: String?
-): Parcelable
+data class Image(@PrimaryKey(autoGenerate = true)
+                 val id: Int = 0,
+                 @SerializedName("path")
+                 val path: String?,
+                 @SerializedName("extension")
+                 val extension: String?): Parcelable

@@ -1,32 +1,32 @@
 package ru.spb.iac.kotlin_mobile_template.activitities.marvel.presenter
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
-
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Response
-import retrofit2.Retrofit
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ru.spb.iac.kotlin_mobile_template.R
+import ru.spb.iac.kotlin_mobile_template.appdatabase.DBConnection
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.view.Profile
+import ru.spb.iac.kotlin_mobile_template.activitities.marvel.data.Character
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.model.CharactersObject
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.model.MarvelCharactersModel
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersView
 import ru.spb.iac.kotlin_mobile_template.architecture.model.api.API
 import ru.spb.iac.kotlin_mobile_template.architecture.presenter.AbstractPresenter
-import ru.spb.iac.kotlin_mobile_template.architecture.presenter.responsehandler.api.ApiResponseHandler
-import ru.spb.iac.kotlin_mobile_template.architecture.presenter.responsehandler.api.DefaultApiActions
 import ru.spb.iac.kotlin_mobile_template.databinding.ActivityRssFeedBinding
-import ru.spb.iac.kotlin_mobile_template.services.App
+import java.io.IOException
+import java.net.InetSocketAddress
+import java.net.Socket
+import java.net.SocketAddress
+import kotlin.concurrent.thread
 
 
 class MarvelCharactersPresenter (view: MarvelCharactersView,
@@ -34,21 +34,74 @@ class MarvelCharactersPresenter (view: MarvelCharactersView,
 ): AbstractPresenter<MarvelCharactersView>(view) {
 
     init {
-        val defHand = DefaultApiActions(subscription, view)
-        val handler = ApiResponseHandler(defHand)
-        handler.prepareSubscribtion(API.getMarvelApi().getCharacters(), { response ->
-            CharactersObject.characterDataWrapper = response.body()
-            MarvelCharactersModel(CharactersObject.characterDataWrapper?.data?.results).let { model ->
-                binding.model = model
-                model.getCharacters()?.let { characters ->
-                    binding.recycler.adapter = MarvelCharactersAdapter(ArrayList(characters))
-                }
+        thread {
+            if (isOnline()) {
+                Log.e(TAG, "init: isOnline = true")
+                loadCharactersFromServer()
             }
-        }).subscribe()
+            else {
+                Log.e(TAG, "init: isOnline = false")
+                loadCharactersFromDatabase()
+            }
+        }
+    }
+
+    private fun setCharacters(characters: MutableList<Character>?) {
+        MarvelCharactersModel(characters).let { model ->
+            binding.model = model
+            model.getCharacters()?.let { characters ->
+                binding.recycler.adapter = MarvelCharactersAdapter(ArrayList(characters))
+            }
+        }
+    }
+
+    private fun loadCharactersFromServer() {
+        API.getMarvelApi().getCharacters()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess { response ->
+                CharactersObject.characterDataWrapper = response.body()
+                setCharacters(CharactersObject.characterDataWrapper?.data?.results)
+                saveCharactersToDatabase(CharactersObject.characterDataWrapper?.data?.results)
+            }.subscribe()
+    }
+
+    private fun loadCharactersFromDatabase() {
+        DBConnection.database.getMarverCharactersDao().getCharacters()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess { characterRelations ->
+                val characters: MutableList<Character> = ArrayList()
+
+                Log.e(TAG, "doOnSuccess: $characterRelations")
+                if (characterRelations.isEmpty()) {
+                    Toast.makeText(binding.root.context, "Необходимо подключение к интернету для загрузки персонажей", Toast.LENGTH_SHORT).show()
+                    return@doOnSuccess
+                }
+
+                characterRelations.forEach { item ->
+                    Character(item.character?.id, item.character?.name, item.character?.description,
+                        item.character?.modified, item.character?.resourceURI, item.urls?.toMutableList(),
+                        item.image, item.comicList, item.storyList, item.eventList, item.seriesList).let {
+                        Log.e(TAG, "item: $it")
+                        characters.add(it)
+                    }
+                }
+                setCharacters(characters)
+
+            }.subscribe()
+    }
+
+    private fun saveCharactersToDatabase(characters: MutableList<Character>?) {
+        thread {
+            characters?.forEach {
+                DBConnection.database.getMarverCharactersDao()
+                    .insertCharacter(it, it.thumbnail, it.comics, it.events, it.series, it.stories, it.urls)
+            }
+        }
     }
 
     override fun onStart() {
-
     }
     override fun onDestroyed() {
     }
@@ -97,5 +150,18 @@ class MarvelCharactersPresenter (view: MarvelCharactersView,
             }
         }
         return this.view.actionBar?.onOptionsItemSelected(menuItem) ?: false
+    }
+
+    private fun isOnline(): Boolean {
+        return try {
+            val timeoutMs = 1500
+            val sock = Socket()
+            val sockaddr: SocketAddress = InetSocketAddress("8.8.8.8", 53)
+            sock.connect(sockaddr, timeoutMs)
+            sock.close()
+            true
+        } catch (e: IOException) {
+            false
+        }
     }
 }

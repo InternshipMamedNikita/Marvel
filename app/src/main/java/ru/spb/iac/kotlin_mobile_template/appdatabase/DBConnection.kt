@@ -1,8 +1,6 @@
-package ru.spb.iac.kotlin_mobile_template.activitities.authorization.database
+package ru.spb.iac.kotlin_mobile_template.appdatabase
 
-import android.content.Context
 import androidx.room.Room
-import androidx.room.migration.Migration
 import ru.spb.iac.kotlin_mobile_template.services.App
 
 object DBConnection {

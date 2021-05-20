@@ -8,7 +8,7 @@ import ru.spb.iac.kotlin_mobile_template.activitities.main.model.db.UserEntity
 interface UserDao {
 
     @Query("SELECT * FROM user")
-    fun getUsers(): List<User>
+    fun getUsers(): Single<List<User>>
 
     @Query("SELECT * FROM user WHERE login LIKE :login")
     fun getUser(login: String): Maybe<User?>

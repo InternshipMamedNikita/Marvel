@@ -65,74 +65,9 @@
             android:layout_weight="6"
             android:text="@string/register_text"
             style="@style/RoundedButton"
-            android:onClick="registrate" />
+            android:onClick="register" />
 
 <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="12" />
 
     </LinearLayout>
 </layout>
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:orientation="vertical" android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
-<!--    <LinearLayout-->
-<!--        android:layout_marginTop="150dp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:orientation="horizontal">-->
-<!--        <TextView-->
-<!--            android:layout_height="50dp"-->
-<!--            android:text="Логин:"-->
-<!--            android:textSize="30dp"-->
-
-<!--            android:textAlignment="center"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_width="0dp"></TextView>-->
-<!--        <EditText-->
-<!--            android:id="@+id/reg_login"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="2"-->
-<!--            android:layout_width="0dp"></EditText>-->
-<!--    </LinearLayout>-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:orientation="horizontal">-->
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Пароль:"-->
-<!--            android:textSize="30dp"-->
-<!--            android:textAlignment="center"></TextView>-->
-<!--        <EditText-->
-<!--            android:id="@+id/reg_password"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_weight="2"-->
-<!--            android:layout_height="50dp"></EditText>-->
-<!--    </LinearLayout>-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:orientation="horizontal">-->
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Имя:"-->
-<!--            android:textSize="30dp"-->
-<!--            android:textAlignment="center"></TextView>-->
-<!--        <EditText-->
-<!--            android:id="@+id/reg_name"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_weight="2"-->
-<!--            android:layout_height="50dp"></EditText>-->
-<!--    </LinearLayout>-->
-<!--    <Button-->
-<!--        android:onClick="registrate"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:layout_width="370dp"-->
-<!--        android:text="Зарегистрироваться"-->
-<!--        android:textSize="25dp"-->
-<!--        android:layout_height="50dp"></Button>-->
-<!--</LinearLayout>-->

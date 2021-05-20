@@ -12,7 +12,6 @@
         android:layout_height="200dp"
         android:src="@mipmap/captain_russia_foreground"
         android:layout_centerInParent="true"
-        android:id="@+id/dollar">
+        android:id="@+id/dollar" />
 
-    </ImageView>
 </RelativeLayout>

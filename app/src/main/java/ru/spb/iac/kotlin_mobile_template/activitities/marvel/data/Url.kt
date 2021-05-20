@@ -7,10 +7,11 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-@Entity(indices = [Index("id")])
+@Entity
 @Parcelize
-data class Url(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @SerializedName("type") val type: String?,
-    @SerializedName("url")  val url: String?
-): Parcelable
+data class Url(@PrimaryKey(autoGenerate = true)
+               val id: Int = 0,
+               @SerializedName("type")
+               val type: String?,
+               @SerializedName("url")
+               val url: String?): Parcelable
