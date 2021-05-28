@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.navigationrail.NavigationRailMenuView
+import com.google.android.material.navigationrail.NavigationRailView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.xmlpull.v1.XmlPullParser
@@ -20,6 +22,7 @@ import ru.spb.iac.kotlin_mobile_template.appdatabase.DBConnection
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
 import ru.spb.iac.kotlin_mobile_template.databinding.ActivityAuthorizationBinding
 
+// Swipe Refresh, VK Autorization, Animation, Constraint, Observable
 
 class Authorization: AppCompatActivity() {
     lateinit var binding: ActivityAuthorizationBinding
