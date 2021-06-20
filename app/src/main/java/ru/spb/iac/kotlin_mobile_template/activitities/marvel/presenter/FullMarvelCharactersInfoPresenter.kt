@@ -14,6 +14,7 @@ class FullMarvelCharactersInfoPresenter(view: FullMarvelCharactersInfoView,
     : AbstractPresenter<FullMarvelCharactersInfoView>(view) {
      override fun onStart() {
          binding.model = FullMarvelCharctersInfoModel((binding.root.context as AppCompatActivity).intent.getParcelableExtra("character"))
+
      }
      override fun onDestroyed() {
      }

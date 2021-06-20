@@ -22,7 +22,7 @@ import ru.spb.iac.kotlin_mobile_template.appdatabase.DBConnection
 import ru.spb.iac.kotlin_mobile_template.activitities.marvel.view.MarvelCharactersActivity
 import ru.spb.iac.kotlin_mobile_template.databinding.ActivityAuthorizationBinding
 
-// Swipe Refresh, VK Autorization, Animation, Constraint, Observable
+// Swipe Refresh, VK Autorization, Observable
 
 class Authorization: AppCompatActivity() {
     lateinit var binding: ActivityAuthorizationBinding

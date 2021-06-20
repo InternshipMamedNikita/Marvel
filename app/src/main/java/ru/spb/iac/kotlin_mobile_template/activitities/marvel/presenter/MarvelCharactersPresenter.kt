@@ -34,6 +34,14 @@ class MarvelCharactersPresenter (view: MarvelCharactersView,
 ): AbstractPresenter<MarvelCharactersView>(view) {
 
     init {
+
+        binding.swipeRefresh.setOnRefreshListener {
+            load()
+            binding.swipeRefresh.isRefreshing = false
+        }
+            load()
+    }
+    private fun load() {
         thread {
             if (isOnline()) {
                 Log.e(TAG, "init: isOnline = true")
@@ -45,7 +53,6 @@ class MarvelCharactersPresenter (view: MarvelCharactersView,
             }
         }
     }
-
     private fun setCharacters(characters: MutableList<Character>?) {
         MarvelCharactersModel(characters).let { model ->
             binding.model = model
