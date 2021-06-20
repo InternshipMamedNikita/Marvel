@@ -8,7 +8,7 @@
             name="model"
             type="ru.spb.iac.kotlin_mobile_template.activitities.marvel.model.MarvelCharactersModel"/>
     </data>
-        <androidx.drawerlayout.widget.DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
             android:id="@+id/drawe_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,19 +27,27 @@
                     app:menu="@menu/toolbar_menu" />
 
             </LinearLayout>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    android:id="@+id/swipe_refresh"
-    android:layout_marginTop="55dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-        </androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_marginTop="55dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>
