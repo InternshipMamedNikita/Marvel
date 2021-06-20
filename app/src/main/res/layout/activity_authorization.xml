@@ -1,68 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#000047">
 
         <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="18"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/logo_description"
             android:src="@mipmap/marvel_foreground"
-            android:contentDescription="@string/logo_description" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            style="@style/RoundedTextInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
-            style="@style/RoundedTextInput">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/auth_login"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/auth_login"/>
+                android:hint="@string/auth_login" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            style="@style/RoundedTextInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
-            style="@style/RoundedTextInput">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/auth_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPassword"
-                android:hint="@string/auth_password"/>
+                android:hint="@string/auth_password"
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-<View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="6" />
-
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton2"
+            style="@style/RoundedButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="openMarvelCharacters"
             android:text="@string/login_text"
-            style="@style/RoundedButton"
-            android:onClick="openMarvelCharacters" />
+            app:layout_constraintBottom_toTopOf="@+id/materialButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:text="@string/register_text"
+            android:id="@+id/materialButton"
             style="@style/RoundedButton"
-            android:onClick="openRegistration" />
-
-        <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="12" />
-
-    </LinearLayout>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="openRegistration"
+            android:text="@string/register_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,7 +7,7 @@
             name="model"
             type="ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.ProfileModel" />
     </data>
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000047"
@@ -17,40 +17,52 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="18"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:src="@mipmap/marvel_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="4" />
-
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout7"
+            style="@style/RoundedTextInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
-            style="@style/RoundedTextInput">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_name"
                 android:layout_width="match_parent"
-                android:text="@{model.name}"
                 android:layout_height="match_parent"
-                android:hint="@string/profile_name" />
+                android:hint="@string/profile_name"
+                android:text="@{model.name}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout8"
             style="@style/RoundedTextInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_login"
                 android:layout_width="match_parent"
-                android:text="@{model.login}"
                 android:layout_height="match_parent"
-                android:hint="@string/auth_login" />
+                android:hint="@string/auth_login"
+                android:text="@{model.login}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,37 +71,50 @@
             style="@style/RoundedTextInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@{model.password}"
                 android:hint="@string/auth_password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="@{model.password}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-<View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="4" />
-
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton5"
+            style="@style/RoundedButton"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="saveProfileData"
             android:text="Сохранить"
-            style="@style/RoundedButton"
-            android:onClick="saveProfileData"/>
+            app:layout_constraintBottom_toTopOf="@+id/materialButton4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:text="Отмена"
+            android:id="@+id/materialButton4"
             style="@style/RoundedButton"
-            android:onClick="onBackPressed"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="onBackPressed"
+            android:text="Отмена"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-<View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="4" />
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
