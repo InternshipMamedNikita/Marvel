@@ -4,6 +4,6 @@ import com.vk.api.sdk.VKTokenExpiredHandler
 
 class TokenExpierHandler : VKTokenExpiredHandler {
     override fun onTokenExpired() {
-        TODO("Not yet implemented")
+
     }
 }

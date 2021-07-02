@@ -89,5 +89,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="0dp"
+            android:layout_height="69dp"
+            android:onClick="registerWithVK"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="300dp"
+            android:layout_marginBottom="140dp"
+            android:background="@null"
+            app:layout_constraintBottom_toTopOf="@+id/materialButton2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

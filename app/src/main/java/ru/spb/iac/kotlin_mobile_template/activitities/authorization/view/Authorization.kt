@@ -1,5 +1,6 @@
 package ru.spb.iac.kotlin_mobile_template.activitities.authorization.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -26,7 +27,9 @@ import com.vk.api.sdk.utils.VKUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserFactory
 import ru.spb.iac.kotlin_mobile_template.R
+import ru.spb.iac.kotlin_mobile_template.activitities.authorization.data.User
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.vk.VKUsernameParser
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.vk.ValidationHandler
 import ru.spb.iac.kotlin_mobile_template.appdatabase.DBConnection
@@ -40,15 +43,16 @@ import kotlin.concurrent.thread
 class Authorization: AppCompatActivity() {
     lateinit var binding: ActivityAuthorizationBinding
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var editableFactory: Editable.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_authorization)
         sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        editableFactory = Editable.Factory.getInstance()
 
         binding.run {
-            val editableFactory = Editable.Factory.getInstance()
             authLogin.text = editableFactory.newEditable(sharedPreferences.getString("login", ""))
             authPassword.text =
                 editableFactory.newEditable(sharedPreferences.getString("password", ""))
@@ -56,13 +60,11 @@ class Authorization: AppCompatActivity() {
             if (authLogin.text.toString() != "" && authPassword.text.toString() != "")
                 openMarvelCharacters(null)
         }
-
-        VK.login(this, arrayListOf(VKScope.WALL, VKScope.PHOTOS))
     }
 
     fun openMarvelCharacters(v: View?) {
         DBConnection.database.getUserDao()
-            .getUser(findViewById<EditText>(R.id.auth_login).text.toString())
+            .getUser(binding.authLogin.text.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess {
@@ -90,12 +92,16 @@ class Authorization: AppCompatActivity() {
         startActivity(Intent(this, Registration::class.java))
     }
 
+    fun registerWithVK(v: View?) {
+        VK.login(this, arrayListOf(VKScope.WALL, VKScope.PHOTOS, VKScope.EMAIL))
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         if (data == null || !VK.onActivityResult(requestCode, resultCode, data, object : VKAuthCallback {
+                @SuppressLint("CheckResult")
                 override fun onLogin(token: VKAccessToken) {
-
-                    thread {
+                    io.reactivex.Single.fromCallable {
                         val vkMethodCall = VKMethodCall.Builder()
                                                     .method("users.get")
                                                     .skipValidation(true)
@@ -109,16 +115,35 @@ class Authorization: AppCompatActivity() {
 
                         val apiManager = VKApiManager(vkConfig)
 
-                        Log.e("TAG", "onLogin: ${apiManager.execute(vkMethodCall, VKUsernameParser())}")
-//                        VKApiManager(VKApiConfig(this@Authorization, resources.getInteger(R.integer.com_vk_sdk_AppId), ValidationHandler(), accessToken = lazy { token.accessToken })).execute(,
-//                            VKUsernameParser())
+                        return@fromCallable apiManager.execute(vkMethodCall, VKUsernameParser())
+
+
+
+                        }.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSuccess {
+                            Log.e("TAG", "onLogin: ${token.email}")
+                            if (token.email == null)
+                                onLoginFailed(1337228666)
+                            else {
+                                DBConnection.database.getUserDao().insertUser(User(0, it.response[0].firstName, token.email!!))
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe ({
+                                        binding.authLogin.text =
+                                            editableFactory.newEditable(token.email!!)
+                                        openMarvelCharacters(null)
+                                    }, {
+                                        binding.authLogin.text =
+                                            editableFactory.newEditable(token.email!!)
+                                        openMarvelCharacters(null)
+                                    })
+                            }
+                        }.subscribe()
                     }
 
-
-                }
-
                 override fun onLoginFailed(errorCode: Int) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(this@Authorization, "Авторизация через ВКонтакте не прошла. Код ошибки $errorCode", Toast.LENGTH_SHORT).show()
                 }
 
             })) {

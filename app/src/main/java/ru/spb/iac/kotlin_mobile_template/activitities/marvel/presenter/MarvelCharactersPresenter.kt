@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.delay
 import ru.spb.iac.kotlin_mobile_template.R
 import ru.spb.iac.kotlin_mobile_template.appdatabase.DBConnection
 import ru.spb.iac.kotlin_mobile_template.activitities.authorization.view.Profile
