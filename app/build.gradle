@@ -63,6 +63,8 @@ ext {
 }
 
 dependencies {
+    implementation 'com.vk:androidsdk:2.2.0'
+
     api 'com.google.android.material:material:1.4.0-beta01'
     implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

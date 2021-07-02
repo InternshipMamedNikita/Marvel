@@ -28,4 +28,6 @@
     <string name="auth_password">Пароль</string>
     <string name="profile_name">Имя</string>
 
+    <integer name="com_vk_sdk_AppId">7869384</integer>
+
 </resources>

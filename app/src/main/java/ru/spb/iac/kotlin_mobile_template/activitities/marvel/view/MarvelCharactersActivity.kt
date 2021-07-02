@@ -20,6 +20,7 @@ import ru.spb.iac.kotlin_mobile_template.architecture.presenter.AbstractPresente
 import ru.spb.iac.kotlin_mobile_template.architecture.view.AbstractActivity
 import ru.spb.iac.kotlin_mobile_template.common.actionbar.ActionBarConstructor
 import ru.spb.iac.kotlin_mobile_template.databinding.ActivityRssFeedBinding
+import kotlin.random.Random
 
 class MarvelCharactersActivity : AbstractActivity<MarvelCharactersView, MarvelCharactersModel>() {
 
